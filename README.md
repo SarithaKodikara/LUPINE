@@ -14,5 +14,15 @@ Install the GitHub version with:
 devtools::install_github("https://github.com/SarithaKodikara/LUPINE", build_vignettes = T)
 ```
 
+## Vignette
+
+You can view the vignette [here](https://sarithakodikara.github.io/LUPINE/example.html)
+
+Or
+
+```{r}
+browseVignettes("LUPINE")
+```
+
 
 
