@@ -9,7 +9,6 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom mixOmics pca
-#' @importFrom tibble as_tibble
 PCA_approx <- function(X, ncomp = 1) {
   ## checking which taxa has zero variance to avoid errors in pca##
   zero_var_index <- which(X %>% apply(., 2, var) == 0)
@@ -18,7 +17,7 @@ PCA_approx <- function(X, ncomp = 1) {
     pca_res <- pca(X[, -zero_var_index], ncomp = ncomp, scale = TRUE)
 
     # loadings for nonZero variance
-    loadings_m <- pca_res$loadings$X %>% as_tibble()
+    loadings_m <- pca_res$loadings$X
 
     # Including a loading of zero to taxa with zero variance
     for (i in 1:(length(zero_var_index))) {
