@@ -25,9 +25,9 @@ PCA_approx <- function(X, ncomp = 1) {
         loadings_m <- rbind(rep(0, ncomp), loadings_m)
       } else {
         loadings_m <- rbind(
-          loadings_m[1:(zero_var_index[i] - 1), ],
+          loadings_m[1:(zero_var_index[i] - 1), , drop = FALSE],
           rep(0, ncomp),
-          loadings_m[zero_var_index[i]:dim(loadings_m)[1], ]
+          loadings_m[zero_var_index[i]:dim(loadings_m)[1], , drop = FALSE]
         )
       }
     }

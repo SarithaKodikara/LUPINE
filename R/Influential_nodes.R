@@ -19,7 +19,7 @@ IVI_values<- function(network_ls, group, days){
     df_ivi[index,1]<-group
     df_ivi[index,2]<-days[i]
     net_ig<-graph_from_adjacency_matrix(network_ls[[i]], mode = "undirected")
-    df_ivi[index,3:(dim(net_Normal[[1]])[2]+2)]<-ivi(graph = net_ig)
+    df_ivi[index,3:(dim(network_ls[[1]])[2]+2)]<-ivi(graph = net_ig)
   }
   return(df_ivi)
 }
