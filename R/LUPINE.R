@@ -1,6 +1,6 @@
 #' LUPINE function
 #'
-#' @param data The data matrix (rows are samples, columns are features/variables, and slices are time points)
+#' @param data A 3D array of counts or transformed data (e.g. clr) with dimensions samples x taxa x time points
 #' @param is.transformed A logical indicating whether the data is transformed or not
 #' @param lib_size A matrix of library sizes for each sample and time point
 #' @param ncomp The number of components to use for dimensionality reduction
