@@ -18,7 +18,7 @@ navbar:
     - lightswitch
   components:
     intro:
-      icon: fa-home
+      icon: fa-home fa-lg
       href: index.html
     articles:
       text: Vignettes
