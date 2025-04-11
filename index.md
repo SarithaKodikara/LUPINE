@@ -47,19 +47,19 @@ By default, LUPINE assumes count data. If your data is *already transformed*, se
 Your data should not contain taxa with zero variance at any time point.
 If any taxa have zero variance, make sure to exclude them in modelling by including them in the `excluded_taxa` argument.
 
-### day
+- ### day
 
 A **numeric vector** indicating the time points (e.g., days or weeks) corresponding to each slice along the third dimension of the data array.
 The values must be in **increasing order** and should match the order of time points in the array.
 
-### excluded_taxa (optional)
+- ### excluded_taxa (optional)
 
 A **list of vectors** specifying microbial species to exclude at each time point.
 Each vector corresponds to a time point, and the taxa names must **match the column names** of the data array.
 
 This is useful for excluding taxa with low counts or many zeros, which may lead to unstable or biased correlation estimates.
 
-### lib_size (optional)
+- ### lib_size (optional)
 
 If your input data is counts and you have access to library sizes, 
 you can provide them via the lib_size argument as a **matrix** where rows represent samples and columns represent time points.
