@@ -82,23 +82,20 @@
 </ul>
 <p>LUPINE is designed to work with <strong>3D arrays</strong>, where the first dimension (rows) represents samples, the second dimension (columns) represents microbial species, and the third dimension represents time points. This array can contain <strong>count data</strong> or <strong>transformed/normalized data</strong> (e.g., log-transformed, CLR-transformed, etc.). By default, LUPINE assumes count data. If your data is <em>already transformed</em>, set the argument <code>is.transformed = TRUE</code>.</p>
 <p><code style="color : Blue"> Note </code> Your data should not contain taxa with zero variance at any time point. If any taxa have zero variance, make sure to exclude them in modelling by including them in the <code>excluded_taxa</code> argument.</p>
-<div class="section level3">
-<h3 id="day">day<a class="anchor" aria-label="anchor" href="#day"></a>
-</h3>
+<ul>
+<li><h3 id="day">day</h3></li>
+</ul>
 <p>A <strong>numeric vector</strong> indicating the time points (e.g., days or weeks) corresponding to each slice along the third dimension of the data array. The values must be in <strong>increasing order</strong> and should match the order of time points in the array.</p>
-</div>
-<div class="section level3">
-<h3 id="excluded_taxa-optional">excluded_taxa (optional)<a class="anchor" aria-label="anchor" href="#excluded_taxa-optional"></a>
-</h3>
+<ul>
+<li><h3 id="excluded_taxa-optional">excluded_taxa (optional)</h3></li>
+</ul>
 <p>A <strong>list of vectors</strong> specifying microbial species to exclude at each time point. Each vector corresponds to a time point, and the taxa names must <strong>match the column names</strong> of the data array.</p>
 <p>This is useful for excluding taxa with low counts or many zeros, which may lead to unstable or biased correlation estimates.</p>
-</div>
-<div class="section level3">
-<h3 id="lib_size-optional">lib_size (optional)<a class="anchor" aria-label="anchor" href="#lib_size-optional"></a>
-</h3>
+<ul>
+<li><h3 id="lib_size-optional">lib_size (optional)</h3></li>
+</ul>
 <p>If your input data is counts and you have access to library sizes, you can provide them via the lib_size argument as a <strong>matrix</strong> where rows represent samples and columns represent time points.</p>
 <p>Ensure the matrix contains <strong>no zero values</strong>, as zero library sizes are not valid for the analysis.</p>
-</div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
