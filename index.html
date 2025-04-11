@@ -77,12 +77,11 @@
 <h2 id="how-to-use-lupine">How to use LUPINE?<a class="anchor" aria-label="anchor" href="#how-to-use-lupine"></a>
 </h2>
 <p>You need to load the package and then run the LUPINE function with your data. Make sure you read following sections to understand the arguments in the function.</p>
-<div class="section level3">
-<h3 id="data">data<a class="anchor" aria-label="anchor" href="#data"></a>
-</h3>
+<ul>
+<li><h3 id="data">data</h3></li>
+</ul>
 <p>LUPINE is designed to work with <strong>3D arrays</strong>, where the first dimension (rows) represents samples, the second dimension (columns) represents microbial species, and the third dimension represents time points. This array can contain <strong>count data</strong> or <strong>transformed/normalized data</strong> (e.g., log-transformed, CLR-transformed, etc.). By default, LUPINE assumes count data. If your data is <em>already transformed</em>, set the argument <code>is.transformed = TRUE</code>.</p>
 <p><code style="color : Blue"> Note </code> Your data should not contain taxa with zero variance at any time point. If any taxa have zero variance, make sure to exclude them in modelling by including them in the <code>excluded_taxa</code> argument.</p>
-</div>
 <div class="section level3">
 <h3 id="day">day<a class="anchor" aria-label="anchor" href="#day"></a>
 </h3>
