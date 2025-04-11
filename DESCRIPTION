@@ -36,6 +36,7 @@ Imports:
     ComplexHeatmap,
     patchwork,
     cowplot,
+    ggraph
     qs,
     tidyr
 URL: https://sarithakodikara.github.io/LUPINE/
