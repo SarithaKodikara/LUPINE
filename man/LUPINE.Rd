@@ -16,7 +16,7 @@ LUPINE(
 )
 }
 \arguments{
-\item{data}{The data matrix (rows are samples, columns are features/variables, and slices are time points)}
+\item{data}{A 3D array of counts or transformed data (e.g. clr) with dimensions samples x taxa x time points}
 
 \item{is.transformed}{A logical indicating whether the data is transformed or not}
 

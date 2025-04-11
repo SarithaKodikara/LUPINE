@@ -1,0 +1,12 @@
+bibentry(
+  bibtype  = "Article",
+  title="Microbial network inference for longitudinal microbiome studies with LUPINE",
+  author="Saritha Kodikara and Kim-Anh Lê Cao",
+  journal="Microbiome",
+  volume="13",
+  number="1",
+  pages="64",
+  year="2025",
+  publisher="Springer",
+  doi = "10.1186/s40168-025-02041-w"
+)

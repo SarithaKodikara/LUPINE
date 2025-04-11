@@ -1,9 +1,9 @@
 ---
-title: "LUPINE High-Fat High-Sugar case study"
+title: "High-Fat High-Sugar case study"
 output: rmarkdown::html_vignette
 author: "Saritha Kodikara"
 vignette: >
-  %\VignetteIndexEntry{example}
+  %\VignetteIndexEntry{High-Fat High-Sugar case study}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -37,6 +37,7 @@ library(mixOmics) # pca
 library(ComplexHeatmap) # Heatmap
 library(patchwork) # plotting
 library(cowplot) # plotting
+library(qs) # qread
 set.seed(1234)
 ```
 
@@ -194,23 +195,28 @@ data("HFHSdata")
 
 We use `LUPINE` to infer co-occurrence networks for both the normal and HFHS diets. The inferred networks are saved as `net_Normal` and `net_HFHS`.
 
-```{r}
+```{r eval=FALSE}
 net_Normal <- LUPINE(HFHSdata$OTUdata_Normal,
   is.transformed = FALSE,
   lib_size = HFHSdata$Lib_Normal, ncomp = 1, single = FALSE,
   excluded_taxa = HFHSdata$low_Normal_taxa, cutoff = 0.05
 )
+qsave(net_Normal, "output/net_Normal.qs")
 
 net_HFHS <- LUPINE(HFHSdata$OTUdata_HFHS,
   is.transformed = FALSE,
   lib_size = HFHSdata$Lib_HFHS, ncomp = 1, single = FALSE,
   excluded_taxa = HFHSdata$low_HFHS_taxa, cutoff = 0.05
 )
+qsave(net_HFHS, "output/net_HFHS.qs")
 ```
 
 ## Network visualization
 
 ```{r warning=FALSE}
+net_Normal <- qread("output/net_Normal.qs")
+net_HFHS <- qread("output/net_HFHS.qs")
+
 Day0 <- HFHSdata$OTUdata_Normal[, , 1]
 taxa_info <- HFHSdata$filtered_taxonomy[colnames(Day0), ]
 taxa_info$X5 <- factor(taxa_info$X5)
@@ -384,17 +390,20 @@ ComplexHeatmap::Heatmap(mantel_res,
 )
 ```
 
-TThe Mantel test results indicate that networks from the normal diet group are significantly correlated with each other and with the HFHS diet networks on Day 1. However, the normal diet networks are not significantly correlated with the HFHS diet networks on Days 4 and 7.
+The Mantel test results indicate that networks from the normal diet group are significantly correlated with each other and with the HFHS diet networks on Day 1. However, the normal diet networks are not significantly correlated with the HFHS diet networks on Days 4 and 7.
 
 ## Using IVI values
 
-```{r}
+```{r eval=FALSE}
 IVI_Normal <- IVI_values(net_Normal, "Normal", c(2, 4, 7))
 IVI_HFHS <- IVI_values(net_HFHS, "HFHS", c(2, 4, 7))
 IVI_comb <- rbind(IVI_Normal, IVI_HFHS)
+qsave(IVI_comb, "output/IVI_comb.qs")
 ```
 
 ```{r  fig.width=7, fig.height=5}
+IVI_comb <- qread("output/IVI_comb.qs")
+
 op <- par(mar = rep(0, 4))
 # matrix with only day 7 normal and HFHS IVI scores
 m1 <- as.matrix(IVI_comb[c(3, 6), -c(1, 2)])
@@ -482,13 +491,14 @@ The PCA plot, like the MDS plot, reveals that networks from the normal diet grou
 
 ## Bootsrap base top 15 associations for day 7 under normal and HFHS diets
 
-```{r }
+```{r eval=FALSE}
 netBoot_Normal <- LUPINE_bootsrap(
   data = HFHSdata$OTUdata_Normal, day_range = 4, is.transformed = FALSE,
   lib_size = HFHSdata$Lib_Normal, ncomp = 1,
   single = FALSE, excluded_taxa = HFHSdata$low_Normal_taxa, cutoff = 0.05,
   nboot = 1000
 )
+qsave(netBoot_Normal, "output/netBoot_Normal.qs")
 
 netBoot_HFHS <- LUPINE_bootsrap(HFHSdata$OTUdata_HFHS,
   day_range = 4,
@@ -496,8 +506,13 @@ netBoot_HFHS <- LUPINE_bootsrap(HFHSdata$OTUdata_HFHS,
   single = FALSE, excluded_taxa = HFHSdata$low_HFHS_taxa, cutoff = 0.05,
   nboot = 1000
 )
-```
 
+qsave(netBoot_HFHS, "output/netBoot_HFHS.qs")
+```
+```{r}
+netBoot_Normal<-qread("output/netBoot_Normal.qs")
+netBoot_HFHS<-qread("output/netBoot_HFHS.qs")
+```
 ### Visualising log pvalues for Normal and HFHS diets
 
 ```{r  fig.width=8, fig.height=5, warning=FALSE}

@@ -1,0 +1,33 @@
+url: https://sarithakodikara.github.io/LUPINE/
+
+
+authors:
+  Saritha Kodikara:
+    href: https://github.com/SarithaKodikara
+
+
+template:
+  bootstrap: 5
+  bslib:
+    bootswatch: simplex
+    pkgdown-nav-height: 100px
+
+navbar:
+  structure:
+    left: [intro,  articles, reference]
+    right: [github, lightswitch]
+  components:
+   intro:
+    icon: fa-home
+    href: index.html
+   articles:
+    text: Vignettes
+    menu:
+    - text: High-Fat High-Sugar case study
+      href: articles/HFHS.html
+   reference:
+    text: Functions
+    href: reference/index.html
+
+
+
