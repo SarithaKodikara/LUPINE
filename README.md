@@ -13,9 +13,9 @@ Install the GitHub version with:
 devtools::install_github("https://github.com/SarithaKodikara/LUPINE")
 ```
 
-## Vignette
+## Package Website
 
-You can view the vignette [here](https://sarithakodikara.github.io/LUPINE/example.html)
+You can view the package website [here](https://sarithakodikara.github.io/LUPINE/)
 
 
 
