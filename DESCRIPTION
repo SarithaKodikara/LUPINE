@@ -32,6 +32,11 @@ Imports:
     rlist,
     rospca,
     circlize,
+    tidygraph,
+    ComplexHeatmap,
+    patchwork,
+    cowplot,
+    qs,
     tidyr
 URL: https://sarithakodikara.github.io/LUPINE/
 
