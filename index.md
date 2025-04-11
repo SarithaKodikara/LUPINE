@@ -37,7 +37,7 @@ You need to load the package and then run the LUPINE function with your data.
 Make sure you read following sections to understand the arguments in the function.
 
 
-### data
+- ### data
 
 LUPINE is designed to work with **3D arrays**, where the first dimension (rows) represents samples, the second dimension (columns) represents microbial species, and the third dimension represents time points.
 This array can contain **count data** or **transformed/normalized data** (e.g., log-transformed, CLR-transformed, etc.).
