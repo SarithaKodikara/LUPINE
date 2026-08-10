@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>High-Fat High-Sugar case study • LUPINE</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="High-Fat High-Sugar case study">
 </head>
@@ -90,7 +90,7 @@ diets using bootstrap-based p-values.</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jokergoo/ComplexHeatmap" class="external-link">ComplexHeatmap</a></span><span class="op">)</span> <span class="co"># Heatmap</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span> <span class="co"># plotting</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/" class="external-link">cowplot</a></span><span class="op">)</span> <span class="co"># plotting</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/qsbase/qs" class="external-link">qs</a></span><span class="op">)</span> <span class="co"># qread</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/qsbase/qs2" class="external-link">qs2</a></span><span class="op">)</span> <span class="co"># qread</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -125,20 +125,20 @@ the normal and HFHS diets. The inferred networks are saved as
 <span>  lib_size <span class="op">=</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">Lib_Normal</span>, ncomp <span class="op">=</span> <span class="fl">1</span>, single <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  excluded_taxa <span class="op">=</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">low_Normal_taxa</span>, cutoff <span class="op">=</span> <span class="fl">0.05</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qsave.html" class="external-link">qsave</a></span><span class="op">(</span><span class="va">net_Normal</span>, <span class="st">"output/net_Normal.qs"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_save.html" class="external-link">qs_save</a></span><span class="op">(</span><span class="va">net_Normal</span>, <span class="st">"output/net_Normal.qs2"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">net_HFHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/LUPINE.html">LUPINE</a></span><span class="op">(</span><span class="va">HFHSdata</span><span class="op">$</span><span class="va">OTUdata_HFHS</span>,</span>
 <span>  is.transformed <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  lib_size <span class="op">=</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">Lib_HFHS</span>, ncomp <span class="op">=</span> <span class="fl">1</span>, single <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  excluded_taxa <span class="op">=</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">low_HFHS_taxa</span>, cutoff <span class="op">=</span> <span class="fl">0.05</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qsave.html" class="external-link">qsave</a></span><span class="op">(</span><span class="va">net_HFHS</span>, <span class="st">"output/net_HFHS.qs"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_save.html" class="external-link">qs_save</a></span><span class="op">(</span><span class="va">net_HFHS</span>, <span class="st">"output/net_HFHS.qs2"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="network-visualization">Network visualization<a class="anchor" aria-label="anchor" href="#network-visualization"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">net_Normal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs/man/qread.html" class="external-link">qread</a></span><span class="op">(</span><span class="st">"output/net_Normal.qs"</span><span class="op">)</span></span>
-<span><span class="va">net_HFHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs/man/qread.html" class="external-link">qread</a></span><span class="op">(</span><span class="st">"output/net_HFHS.qs"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">net_Normal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html" class="external-link">qs_read</a></span><span class="op">(</span><span class="st">"output/net_Normal.qs2"</span><span class="op">)</span></span>
+<span><span class="va">net_HFHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html" class="external-link">qs_read</a></span><span class="op">(</span><span class="st">"output/net_HFHS.qs2"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">Day0</span> <span class="op">&lt;-</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">OTUdata_Normal</span><span class="op">[</span>, , <span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">taxa_info</span> <span class="op">&lt;-</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">filtered_taxonomy</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">Day0</span><span class="op">)</span>, <span class="op">]</span></span>
@@ -155,8 +155,8 @@ the normal and HFHS diets. The inferred networks are saved as
 <span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu">netPlot_HFHS</span><span class="op">(</span><span class="va">net_HFHS</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, <span class="va">col_vec</span>, <span class="st">"HFHS Day7"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="768"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="700"></p>
 <p>On Day 7, we observe fewer connections among nodes belonging to the
 <em>Bacteroidales</em> order in the HFHS diet group compared to the
 normal diet group. In the normal diet group, nodes from the
@@ -209,7 +209,7 @@ diffusion process on graphs.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"D"</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"D"</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"D"</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  cex.axis <span class="op">=</span> <span class="fl">1.2</span>, col.axis <span class="op">=</span> <span class="st">"#F68B33"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="576"></p>
 <p>The pairwise network distance matrix indicates that networks inferred
 from the normal diet group are more similar to each other than to those
 from the HFHS diet group. As the number of networks increases, so do the
@@ -245,7 +245,7 @@ a global assessment of network similarities and differences.</p>
 <span>                     name <span class="op">=</span> <span class="st">"Diet"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p2</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-10-1.png" width="384"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level3">
 <h3 id="testing-the-network-correlations-using-mantel-test">Testing the network correlations using Mantel test<a class="anchor" aria-label="anchor" href="#testing-the-network-correlations-using-mantel-test"></a>
@@ -298,7 +298,7 @@ correlated.</p>
 <span>    <span class="fu"><a href="https://rdrr.io/r/grid/grid.text.html" class="external-link">grid.text</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%.2f"</span>, <span class="va">mantel_res</span><span class="op">[</span><span class="va">i</span>, <span class="va">j</span><span class="op">]</span><span class="op">)</span>, <span class="va">x</span>, <span class="va">y</span>, gp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/gpar.html" class="external-link">gpar</a></span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-12-1.png" width="480"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="480"></p>
 <p>The Mantel test results indicate that networks from the normal diet
 group are significantly correlated with each other and with the HFHS
 diet networks on Day 1. However, the normal diet networks are not
@@ -313,9 +313,9 @@ significantly correlated with the HFHS diet networks on Days 4 and
 <code class="sourceCode R"><span><span class="va">IVI_Normal</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IVI_values.html">IVI_values</a></span><span class="op">(</span><span class="va">net_Normal</span>, <span class="st">"Normal"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">IVI_HFHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/IVI_values.html">IVI_values</a></span><span class="op">(</span><span class="va">net_HFHS</span>, <span class="st">"HFHS"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">IVI_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">IVI_Normal</span>, <span class="va">IVI_HFHS</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qsave.html" class="external-link">qsave</a></span><span class="op">(</span><span class="va">IVI_comb</span>, <span class="st">"output/IVI_comb.qs"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_save.html" class="external-link">qs_save</a></span><span class="op">(</span><span class="va">IVI_comb</span>, <span class="st">"output/IVI_comb.qs2"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">IVI_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs/man/qread.html" class="external-link">qread</a></span><span class="op">(</span><span class="st">"output/IVI_comb.qs"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">IVI_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html" class="external-link">qs_read</a></span><span class="op">(</span><span class="st">"output/IVI_comb.qs2"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># matrix with only day 7 normal and HFHS IVI scores</span></span>
@@ -373,7 +373,7 @@ significantly correlated with the HFHS diet networks on Days 4 and
 <span>    x <span class="op">=</span> <span class="va">annotation_y</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">50</span>, label <span class="op">=</span> <span class="st">"HFHS_D7"</span>,</span>
 <span>    hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">1</span>, fontface <span class="op">=</span> <span class="st">"bold"</span>, color <span class="op">=</span> <span class="st">"grey33"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="" width="672"></p>
 <p>The IVI analysis shows that the Day 7 network from the normal diet
 group has higher IVI values in the <em>Bacteroidales</em> and
 <em>Erysipelotrichales</em> orders compared to the HFHS diet network.
@@ -403,7 +403,7 @@ the data.</p>
 <span>                     name <span class="op">=</span> <span class="st">"Diet"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p1</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-15-1.png" width="384"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="384"></p>
 <p>The PCA plot, like the MDS plot, reveals that networks from the
 normal diet group are more similar to each other than to those from the
 HFHS diet group. Additionally, the normal diet networks on Day 7 are
@@ -421,7 +421,7 @@ diets<a class="anchor" aria-label="anchor" href="#bootsrap-base-top-15-associati
 <span>  single <span class="op">=</span> <span class="cn">FALSE</span>, excluded_taxa <span class="op">=</span> <span class="va">HFHSdata</span><span class="op">$</span><span class="va">low_Normal_taxa</span>, cutoff <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  nboot <span class="op">=</span> <span class="fl">1000</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qsave.html" class="external-link">qsave</a></span><span class="op">(</span><span class="va">netBoot_Normal</span>, <span class="st">"output/netBoot_Normal.qs"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_save.html" class="external-link">qs_save</a></span><span class="op">(</span><span class="va">netBoot_Normal</span>, <span class="st">"output/netBoot_Normal.qs2"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">netBoot_HFHS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/LUPINE_bootsrap.html">LUPINE_bootsrap</a></span><span class="op">(</span><span class="va">HFHSdata</span><span class="op">$</span><span class="va">OTUdata_HFHS</span>,</span>
 <span>  day_range <span class="op">=</span> <span class="fl">4</span>,</span>
@@ -430,10 +430,10 @@ diets<a class="anchor" aria-label="anchor" href="#bootsrap-base-top-15-associati
 <span>  nboot <span class="op">=</span> <span class="fl">1000</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qsave.html" class="external-link">qsave</a></span><span class="op">(</span><span class="va">netBoot_HFHS</span>, <span class="st">"output/netBoot_HFHS.qs"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_save.html" class="external-link">qs_save</a></span><span class="op">(</span><span class="va">netBoot_HFHS</span>, <span class="st">"output/netBoot_HFHS.qs2"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">netBoot_Normal</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qread.html" class="external-link">qread</a></span><span class="op">(</span><span class="st">"output/netBoot_Normal.qs"</span><span class="op">)</span></span>
-<span><span class="va">netBoot_HFHS</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/qs/man/qread.html" class="external-link">qread</a></span><span class="op">(</span><span class="st">"output/netBoot_HFHS.qs"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">netBoot_Normal</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html" class="external-link">qs_read</a></span><span class="op">(</span><span class="st">"output/netBoot_Normal.qs2"</span><span class="op">)</span></span>
+<span><span class="va">netBoot_HFHS</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html" class="external-link">qs_read</a></span><span class="op">(</span><span class="st">"output/netBoot_HFHS.qs2"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="visualising-log-pvalues-for-normal-and-hfhs-diets">Visualising log pvalues for Normal and HFHS diets<a class="anchor" aria-label="anchor" href="#visualising-log-pvalues-for-normal-and-hfhs-diets"></a>
 </h4>
@@ -442,13 +442,13 @@ diets<a class="anchor" aria-label="anchor" href="#bootsrap-base-top-15-associati
 <span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">taxa_o</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"o__"</span>, <span class="st">""</span>, <span class="va">taxa_info</span><span class="op">$</span><span class="va">X5</span><span class="op">)</span></span>
 <span><span class="fu">bpvalPlot_HFHS</span><span class="op">(</span><span class="va">netBoot_Normal</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">median_mt</span>, <span class="va">netBoot_Normal</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">lower_mt</span>, <span class="va">netBoot_Normal</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">upper_mt</span>, <span class="va">col_vec</span>, <span class="fl">15</span>, <span class="va">taxa_o</span>, <span class="st">"Normal Day7"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-18-1.png" width="768"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-18-1.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># HFHS_d7</span></span>
 <span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">taxa_o</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"o__"</span>, <span class="st">""</span>, <span class="va">taxa_info</span><span class="op">$</span><span class="va">X5</span><span class="op">)</span></span>
 <span><span class="fu">bpvalPlot_HFHS</span><span class="op">(</span><span class="va">netBoot_HFHS</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">median_mt</span>, <span class="va">netBoot_HFHS</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">lower_mt</span>, <span class="va">netBoot_HFHS</span><span class="op">$</span><span class="va">Day_4</span><span class="op">$</span><span class="va">upper_mt</span>, <span class="va">col_vec</span>, <span class="fl">15</span>, <span class="va">taxa_o</span>, <span class="st">"HFHS Day7"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="HFHS_files/figure-html/unnamed-chunk-19-1.png" width="768"></p>
+<p><img src="HFHS_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" alt="" width="768"></p>
 <p>The top 15 associations for the normal diet group primarily involve
 nodes from the <em>Bacteroidales</em> order, while those for the HFHS
 diet group mainly involve <em>Lactobacillales</em> nodes. However, both
@@ -462,9 +462,9 @@ diets exhibit a similar number of associations within
 </h2>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.4.3 (2025-02-28)</span></span>
+<span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 24.04.2 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.4 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -484,47 +484,47 @@ diets exhibit a similar number of associations within
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] qs_0.27.3             cowplot_1.1.3         patchwork_1.3.0      </span></span>
-<span><span class="co">#&gt;  [4] ComplexHeatmap_2.22.0 mixOmics_6.30.0       lattice_0.22-6       </span></span>
-<span><span class="co">#&gt;  [7] MASS_7.3-64           ggraph_2.2.1          tidygraph_1.3.1      </span></span>
-<span><span class="co">#&gt; [10] dplyr_1.1.4           igraph_2.1.4          circlize_0.4.16      </span></span>
-<span><span class="co">#&gt; [13] RColorBrewer_1.1-3    ggplot2_3.5.2         LUPINE_0.1.0         </span></span>
+<span><span class="co">#&gt;  [1] qs2_0.2.2             cowplot_1.2.0         patchwork_1.3.2      </span></span>
+<span><span class="co">#&gt;  [4] ComplexHeatmap_2.28.0 mixOmics_6.36.0       lattice_0.22-9       </span></span>
+<span><span class="co">#&gt;  [7] MASS_7.3-65           ggraph_2.2.2          tidygraph_1.3.1      </span></span>
+<span><span class="co">#&gt; [10] dplyr_1.2.1           igraph_2.3.3          circlize_0.4.18      </span></span>
+<span><span class="co">#&gt; [13] RColorBrewer_1.1-3    ggplot2_4.0.3         LUPINE_0.1.0         </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] Rdpack_2.6.4          pbapply_1.7-2         gridExtra_2.3        </span></span>
-<span><span class="co">#&gt;   [4] rlang_1.1.5           magrittr_2.0.3        clue_0.3-66          </span></span>
-<span><span class="co">#&gt;   [7] GetoptLong_1.0.5      ade4_1.7-23           NetworkDistance_0.3.4</span></span>
-<span><span class="co">#&gt;  [10] matrixStats_1.5.0     e1071_1.7-16          compiler_4.4.3       </span></span>
-<span><span class="co">#&gt;  [13] png_0.1-8             systemfonts_1.2.2     vctrs_0.6.5          </span></span>
-<span><span class="co">#&gt;  [16] reshape2_1.4.4        stringr_1.5.1         pkgconfig_2.0.3      </span></span>
-<span><span class="co">#&gt;  [19] shape_1.4.6.1         crayon_1.5.3          fastmap_1.2.0        </span></span>
-<span><span class="co">#&gt;  [22] labeling_0.4.3        rmarkdown_2.29        influential_2.2.9    </span></span>
-<span><span class="co">#&gt;  [25] pracma_2.4.4          graphon_0.3.5         ragg_1.3.3           </span></span>
-<span><span class="co">#&gt;  [28] network_1.19.0        purrr_1.0.4           xfun_0.52            </span></span>
-<span><span class="co">#&gt;  [31] cachem_1.1.0          jsonlite_2.0.0        BiocParallel_1.40.2  </span></span>
-<span><span class="co">#&gt;  [34] tweenr_2.0.3          cluster_2.1.8         parallel_4.4.3       </span></span>
-<span><span class="co">#&gt;  [37] R6_2.6.1              bslib_0.9.0           stringi_1.8.7        </span></span>
-<span><span class="co">#&gt;  [40] rlist_0.4.6.2         jquerylib_0.1.4       Rcpp_1.0.14          </span></span>
-<span><span class="co">#&gt;  [43] iterators_1.0.14      knitr_1.50            ROptSpace_0.2.3      </span></span>
-<span><span class="co">#&gt;  [46] IRanges_2.40.1        Matrix_1.7-2          tidyselect_1.2.1     </span></span>
-<span><span class="co">#&gt;  [49] abind_1.4-8           yaml_2.3.10           viridis_0.6.5        </span></span>
-<span><span class="co">#&gt;  [52] stringfish_0.16.0     doParallel_1.0.17     codetools_0.2-20     </span></span>
-<span><span class="co">#&gt;  [55] tibble_3.2.1          plyr_1.8.9            withr_3.0.2          </span></span>
-<span><span class="co">#&gt;  [58] rARPACK_0.11-0        coda_0.19-4.1         evaluate_1.0.3       </span></span>
-<span><span class="co">#&gt;  [61] desc_1.4.3            RcppParallel_5.1.10   proxy_0.4-27         </span></span>
-<span><span class="co">#&gt;  [64] polyclip_1.10-7       pillar_1.10.2         stats4_4.4.3         </span></span>
-<span><span class="co">#&gt;  [67] foreach_1.5.2         ellipse_0.5.0         generics_0.1.3       </span></span>
-<span><span class="co">#&gt;  [70] S4Vectors_0.44.0      munsell_0.5.1         scales_1.3.0         </span></span>
-<span><span class="co">#&gt;  [73] RApiSerialize_0.1.4   class_7.3-23          glue_1.8.0           </span></span>
-<span><span class="co">#&gt;  [76] tools_4.4.3           data.table_1.17.0     RSpectra_0.16-2      </span></span>
-<span><span class="co">#&gt;  [79] fs_1.6.5              graphlayouts_1.2.2    tidyr_1.3.1          </span></span>
-<span><span class="co">#&gt;  [82] rbibutils_2.3         colorspace_2.1-1      ggforce_0.4.2        </span></span>
-<span><span class="co">#&gt;  [85] cli_3.6.4             textshaping_1.0.0     viridisLite_0.4.2    </span></span>
-<span><span class="co">#&gt;  [88] corpcor_1.6.10        gtable_0.3.6          sass_0.4.9           </span></span>
-<span><span class="co">#&gt;  [91] digest_0.6.37         BiocGenerics_0.52.0   ggrepel_0.9.6        </span></span>
+<span><span class="co">#&gt;   [1] Rdpack_2.6.6          pbapply_1.7-4         gridExtra_2.3.1      </span></span>
+<span><span class="co">#&gt;   [4] rlang_1.3.0           magrittr_2.0.5        clue_0.3-68          </span></span>
+<span><span class="co">#&gt;   [7] GetoptLong_1.1.1      ade4_1.7-24           NetworkDistance_0.3.6</span></span>
+<span><span class="co">#&gt;  [10] otel_0.2.0            matrixStats_1.5.0     e1071_1.7-17         </span></span>
+<span><span class="co">#&gt;  [13] compiler_4.6.1        png_0.1-9             systemfonts_1.3.2    </span></span>
+<span><span class="co">#&gt;  [16] vctrs_0.7.3           reshape2_1.4.5        stringr_1.6.0        </span></span>
+<span><span class="co">#&gt;  [19] pkgconfig_2.0.3       shape_1.4.6.1         crayon_1.5.3         </span></span>
+<span><span class="co">#&gt;  [22] fastmap_1.2.0         labeling_0.4.3        rmarkdown_2.31       </span></span>
+<span><span class="co">#&gt;  [25] influential_2.3.1     pracma_2.4.6          graphon_0.3.6        </span></span>
+<span><span class="co">#&gt;  [28] ragg_1.5.2            network_1.20.0        purrr_1.2.2          </span></span>
+<span><span class="co">#&gt;  [31] xfun_0.60             cachem_1.1.0          jsonlite_2.0.0       </span></span>
+<span><span class="co">#&gt;  [34] BiocParallel_1.46.0   tweenr_2.0.3          cluster_2.1.8.2      </span></span>
+<span><span class="co">#&gt;  [37] parallel_4.6.1        R6_2.6.1              bslib_0.12.0         </span></span>
+<span><span class="co">#&gt;  [40] stringi_1.8.9         rlist_0.4.6.2         jquerylib_0.1.4      </span></span>
+<span><span class="co">#&gt;  [43] Rcpp_1.1.2            iterators_1.0.14      knitr_1.51           </span></span>
+<span><span class="co">#&gt;  [46] ROptSpace_0.2.4       IRanges_2.46.0        Matrix_1.7-5         </span></span>
+<span><span class="co">#&gt;  [49] tidyselect_1.2.1      abind_1.4-8           yaml_2.3.12          </span></span>
+<span><span class="co">#&gt;  [52] viridis_0.6.5         stringfish_0.19.2     doParallel_1.0.17    </span></span>
+<span><span class="co">#&gt;  [55] codetools_0.2-20      tibble_3.3.1          plyr_1.8.9           </span></span>
+<span><span class="co">#&gt;  [58] withr_3.0.3           rARPACK_0.11-0        S7_0.2.2             </span></span>
+<span><span class="co">#&gt;  [61] coda_0.19-4.1         evaluate_1.0.5        desc_1.4.3           </span></span>
+<span><span class="co">#&gt;  [64] RcppParallel_6.2.0    proxy_0.4-29          polyclip_1.10-7      </span></span>
+<span><span class="co">#&gt;  [67] pillar_1.11.1         foreach_1.5.2         stats4_4.6.1         </span></span>
+<span><span class="co">#&gt;  [70] ellipse_0.5.0         generics_0.1.4        S4Vectors_0.50.1     </span></span>
+<span><span class="co">#&gt;  [73] scales_1.4.0          class_7.3-23          glue_1.8.1           </span></span>
+<span><span class="co">#&gt;  [76] tools_4.6.1           data.table_1.18.4     RSpectra_0.16-2      </span></span>
+<span><span class="co">#&gt;  [79] fs_2.1.0              graphlayouts_1.2.5    tidyr_1.3.2          </span></span>
+<span><span class="co">#&gt;  [82] rbibutils_2.4.1       colorspace_2.1-3      ggforce_0.5.0        </span></span>
+<span><span class="co">#&gt;  [85] cli_3.6.6             textshaping_1.0.5     viridisLite_0.4.3    </span></span>
+<span><span class="co">#&gt;  [88] corpcor_1.6.10        gtable_0.3.6          sass_0.4.10          </span></span>
+<span><span class="co">#&gt;  [91] digest_0.6.39         BiocGenerics_0.58.1   ggrepel_0.9.8        </span></span>
 <span><span class="co">#&gt;  [94] rjson_0.2.23          htmlwidgets_1.6.4     farver_2.1.2         </span></span>
-<span><span class="co">#&gt;  [97] memoise_2.0.1         htmltools_0.5.8.1     pkgdown_2.1.1        </span></span>
-<span><span class="co">#&gt; [100] lifecycle_1.0.4       GlobalOptions_0.1.2   statnet.common_4.11.0</span></span></code></pre></div>
+<span><span class="co">#&gt;  [97] memoise_2.0.1         htmltools_0.5.9       pkgdown_2.2.1        </span></span>
+<span><span class="co">#&gt; [100] lifecycle_1.0.5       GlobalOptions_0.1.4   statnet.common_4.13.0</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -537,7 +537,7 @@ diets exhibit a similar number of associations within
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
