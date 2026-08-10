@@ -24,6 +24,7 @@ Imports:
     dplyr,
     e1071,
     fastICA,
+    igraph,
     influential,
     magrittr,
     mixOmics,
@@ -37,7 +38,7 @@ Imports:
     patchwork,
     cowplot,
     ggraph,
-    qs,
+    qs2,
     tidyr
 URL: https://sarithakodikara.github.io/LUPINE/
 
