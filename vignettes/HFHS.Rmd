@@ -37,7 +37,7 @@ library(mixOmics) # pca
 library(ComplexHeatmap) # Heatmap
 library(patchwork) # plotting
 library(cowplot) # plotting
-library(qs) # qread
+library(qs2) # qread
 set.seed(1234)
 ```
 
@@ -201,21 +201,21 @@ net_Normal <- LUPINE(HFHSdata$OTUdata_Normal,
   lib_size = HFHSdata$Lib_Normal, ncomp = 1, single = FALSE,
   excluded_taxa = HFHSdata$low_Normal_taxa, cutoff = 0.05
 )
-qsave(net_Normal, "output/net_Normal.qs")
+qs_save(net_Normal, "output/net_Normal.qs2")
 
 net_HFHS <- LUPINE(HFHSdata$OTUdata_HFHS,
   is.transformed = FALSE,
   lib_size = HFHSdata$Lib_HFHS, ncomp = 1, single = FALSE,
   excluded_taxa = HFHSdata$low_HFHS_taxa, cutoff = 0.05
 )
-qsave(net_HFHS, "output/net_HFHS.qs")
+qs_save(net_HFHS, "output/net_HFHS.qs2")
 ```
 
 ## Network visualization
 
 ```{r warning=FALSE}
-net_Normal <- qread("output/net_Normal.qs")
-net_HFHS <- qread("output/net_HFHS.qs")
+net_Normal <- qs_read("output/net_Normal.qs2")
+net_HFHS <- qs_read("output/net_HFHS.qs2")
 
 Day0 <- HFHSdata$OTUdata_Normal[, , 1]
 taxa_info <- HFHSdata$filtered_taxonomy[colnames(Day0), ]
@@ -398,11 +398,11 @@ The Mantel test results indicate that networks from the normal diet group are si
 IVI_Normal <- IVI_values(net_Normal, "Normal", c(2, 4, 7))
 IVI_HFHS <- IVI_values(net_HFHS, "HFHS", c(2, 4, 7))
 IVI_comb <- rbind(IVI_Normal, IVI_HFHS)
-qsave(IVI_comb, "output/IVI_comb.qs")
+qs_save(IVI_comb, "output/IVI_comb.qs2")
 ```
 
 ```{r  fig.width=7, fig.height=5}
-IVI_comb <- qread("output/IVI_comb.qs")
+IVI_comb <- qs_read("output/IVI_comb.qs2")
 
 op <- par(mar = rep(0, 4))
 # matrix with only day 7 normal and HFHS IVI scores
@@ -498,7 +498,7 @@ netBoot_Normal <- LUPINE_bootsrap(
   single = FALSE, excluded_taxa = HFHSdata$low_Normal_taxa, cutoff = 0.05,
   nboot = 1000
 )
-qsave(netBoot_Normal, "output/netBoot_Normal.qs")
+qs_save(netBoot_Normal, "output/netBoot_Normal.qs2")
 
 netBoot_HFHS <- LUPINE_bootsrap(HFHSdata$OTUdata_HFHS,
   day_range = 4,
@@ -507,11 +507,11 @@ netBoot_HFHS <- LUPINE_bootsrap(HFHSdata$OTUdata_HFHS,
   nboot = 1000
 )
 
-qsave(netBoot_HFHS, "output/netBoot_HFHS.qs")
+qs_save(netBoot_HFHS, "output/netBoot_HFHS.qs2")
 ```
 ```{r}
-netBoot_Normal<-qread("output/netBoot_Normal.qs")
-netBoot_HFHS<-qread("output/netBoot_HFHS.qs")
+netBoot_Normal<-qs_read("output/netBoot_Normal.qs2")
+netBoot_HFHS<-qs_read("output/netBoot_HFHS.qs2")
 ```
 ### Visualising log pvalues for Normal and HFHS diets
 
