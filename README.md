@@ -9,8 +9,8 @@ This repository contains `LUPINE` R package.
 Install the GitHub version with:
 
 ```{r}
-# install.packages("devtools")
-devtools::install_github("https://github.com/SarithaKodikara/LUPINE")
+# install.packages("pak")
+pak::pak("https://github.com/SarithaKodikara/LUPINE")
 ```
 
 ## Package Website
